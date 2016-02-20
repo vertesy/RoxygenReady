@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Roxygenready by vertesy</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/vertesy/RoxygenReady">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/vertesy/RoxygenReady/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/vertesy/RoxygenReady/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Roxygenready</h1>
+          <p>Prepare your R function library to be compiled into an R package by Roxygen</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/vertesy">vertesy</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a id="roxygenready" class="anchor" href="#roxygenready" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RoxygenReady</h1>
+
+<p>Prepare your R function library to be compiled into an R package by Roxygen</p>
+
+<pre><code>  site under construction
+</code></pre>
+
+<h2>
+<a id="a-workflow-and-an-r-package-to-stream-line-package-creation" class="anchor" href="#a-workflow-and-an-r-package-to-stream-line-package-creation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>A Workflow and an R package to stream line package creation</h2>
+
+<p><a href="https://cran.r-project.org/web/packages/roxygen2/index.html">Roxygen2</a> is an awesome tool to easily create a package from your function library</p>
+
+<h3>
+<a id="workflow-how-to-create-an-r-package-overview" class="anchor" href="#workflow-how-to-create-an-r-package-overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Workflow: how to create an R package (overview)</h3>
+
+<blockquote>
+<p>check: Workflow_to_Create_an_R_Package.R for details</p>
+</blockquote>
+
+<ol>
+<li>Write or collect your favourite functions into an R script </li>
+<li>
+<strong>Extract</strong> all <strong>function names</strong> from the script </li>
+<li>
+<strong>Prepare</strong> in-line documentation <strong>with RoxygenReady</strong> / Create Roxy-ready prepared script as a copy </li>
+<li>Manual editing of in-line description</li>
+<li>
+<strong>Compile</strong> a package &amp; documentation <strong>by roxygen2</strong>
+</li>
+<li>
+<strong>Install</strong> your package</li>
+<li>Test your package</li>
+<li>Upload to github</li>
+<li>Test if you can install from github </li>
+</ol>
+
+<h3>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h3>
+
+<p>Install directly from github via devtools:</p>
+
+<pre><code># install.packages("devtools")
+devtools::install_github(username ="vertesy" ,repo = "RoxygenReady", subdir = "RoxygenReady")
+require("RoxygenReady")
+</code></pre>
+
+<h3>
+<a id="package-content" class="anchor" href="#package-content" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Package content</h3>
+
+<p>3 functions to generate inline description from your functions, using their names and arguments as input. These can be later parsed by Roxygen to proper package's help section
+An example inline description:</p>
+
+<pre><code>   #' descriptor_roxy
+   #'
+   #' Description ...
+   #' @param ls_funs list of functions to include in the package: list names should be exact function names in the NAMESPACE,list elements should be the functions.
+   #' @param OutputFile Full path and file name of the file the Roxygen-ready script is written to
+   #' @examples descriptor_roxy(ls_funs = funnames2, OutputFile = Package_FnP)
+   #' @export
+</code></pre>
+
+<h4>
+<a id="this-will-be-parsed-automatically-to" class="anchor" href="#this-will-be-parsed-automatically-to" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This will be parsed automatically to:</h4>
+
+<p><img src="Help_Example.png" alt="Help_Example"></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
