@@ -39,7 +39,7 @@
 <p>The function annotation scaffold created by <strong>RoxygenReady</strong> spares you a lot of time documenting your functions easily and precisely. Your users gonna be grateful! The annotation it creates, can be automatically compiled into a package with a few lines of code. Packages are the standard way of distribution R code, as they integrate with other services, code sharing becomes much easier. (See the installation section for an examples)</p>
 
 <h2>
-<a id="workflow-stream-lined-package-creation" class="anchor" href="#workflow-stream-lined-package-creation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Workflow: stream lined package creation</h2>
+<a id="workflow-streamlined-package-creation" class="anchor" href="#workflow-streamlined-package-creation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Workflow: streamlined package creation</h2>
 
 <ol>
 <li>
@@ -54,7 +54,7 @@
 
 <ul>
 <li>
-<p><em>Create function annotation scaffold by *</em>RoxygenReady** from all functions in your script.*</p>
+<p><em>Create function annotation scaffold by</em> <strong><em>RoxygenReady</em></strong> <em>from all functions in your script.</em></p>
 
 <pre><code>#' print11more
 #'
@@ -79,30 +79,38 @@ print11more &lt;- function(n=1, m=1) {
 </li>
 </ul>
 
-<p><img src="/Users/abelvertesy/RoxygenReady/Images/03.b.Final.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/vertesy/RoxygenReady/master/Images/03.b.Final.png" alt=""></p>
 
 <ul>
-<li>You can share it on github and everyone can super easily install your package.</li>
+<li>You can share it on <strong>GitHub</strong> and everyone can super easily install your package.</li>
 </ul>
 
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
-<p>Install directly from github via devtools:</p>
+<p>Install directly from <strong>GitHub</strong> via <strong>devtools</strong> with one R command:</p>
 
-<pre><code># install.packages("devtools")
-devtools::install_github(username ="vertesy" ,repo = "RoxygenReady", subdir = "RoxygenReady")
-require("RoxygenReady")
+
+
+<pre><code>devtools::install_github(repo = "vertesy/RoxygenReady/RoxygenReady")
+</code></pre>
+
+<p>...then simply load the package:</p>
+
+<pre><code>require("RoxygenReady")
 </code></pre>
 
 <h2>
 <a id="package-content" class="anchor" href="#package-content" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Package content</h2>
 
-<p>A couple of functions to generate inline description from your functions, using their names and arguments as input. These can be later parsed by Roxygen to proper package's help section
-An example inline description:</p>
+<p>A couple of functions to generate inline description from your functions, using their names and arguments as default input. These can be later parsed by Roxygen to an R package's help section.</p>
 
 <h2>
-<a id="how-to-create-an-r-package-overview" class="anchor" href="#how-to-create-an-r-package-overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to create an R package (overview)</h2>
+<a id="how-to-create-an-r-package" class="anchor" href="#how-to-create-an-r-package" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to create an R package</h2>
+
+<blockquote>
+<p>check: Workflow_to_Create_an_R_Package.R for details</p>
+</blockquote>
 
 <ol>
 <li>Write or collect your favorite functions into an R script </li>
@@ -117,16 +125,17 @@ An example inline description:</p>
 <li>
 <strong>Install</strong> your package locally</li>
 <li>Test your package</li>
-<li>Upload to github</li>
+<li>Upload to <strong>GitHub</strong>
+</li>
 <li>Share it with others</li>
 </ol>
 
 <p><br></p>
 
-<pre><code>   Check: Workflow_to_Create_an_R_Package.R for details
+<pre><code>  Check: Workflow_to_Create_an_R_Package.R for details
 </code></pre>
 
-<p><em>Also check out a great introduction to writing your first package in R by <a href="http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Hillary Parker</a></em></p>
+<p><em>Also check out a great introduction about writing your first package in R by <a href="http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Hillary Parker</a></em></p>
 
 <p><br> <br> <br> <br> <br>
 <a href="https://github.com/vertesy/RoxygenReady/generated_pages/new"><em>edit the website</em></a></p>
