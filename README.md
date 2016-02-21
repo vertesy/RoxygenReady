@@ -1,28 +1,46 @@
-# RoxygenReady
-Prepare your R function library to be compiled into an R package by Roxygen
+<!--# RoxygenReady
+Prepare your R function library to be compiled into an R package by Roxygen-->
+<!--      site under construction-->
 
-      site under construction
+[**Roxygen2**](https://cran.r-project.org/web/packages/roxygen2/index.html) is an awesome tool to easily create a package from your function library. 
+
+[**RoxygenReady**](https://github.com/vertesy/RoxygenReady) helps in creating the function annotations needed to compile a proper package (where help() works for your functions!) by **Roxygen2**.
+
+## Workflow: stream lined package creation
+
+1. *You start out with your .R file containing your favorite scripts*
+
+ 		print11more <- function(n=1, m=1) { # a function with real added value
+			print (n+(11*m))
+		}
+
+- *Create function annotation scaffold by **RoxygenReady** from all functions in your script.*
+
+		#' print11more
+		#'
+		#' # a function with real added value
+		#' @param n
+		#' @param m
+		#' @examples print11more(n=1, m=1)
+		#' @export
 
 
-## A Workflow and an R package to stream line package creation
+		print11more <- function(n=1, m=1) {
+			print (n+(11*m))
+		}
 
-[Roxygen2](https://cran.r-project.org/web/packages/roxygen2/index.html) is an awesome tool to easily create a package from your function library
+
+- After compiling and installing you package,
+	- your functions have a working help
+
+![](/Users/abelvertesy/RoxygenReady/Images/03.b.Final.png)
 
 
-### Workflow: how to create an R package (overview)
-> check: Workflow_to_Create_an_R_Package.R for details
+- You can share it on github and everyone can super easily install your package.
+	
 
-1. Write or collect your favourite functions into an R script 
-- **Extract** all **function names** from the script 
-- **Prepare** in-line documentation **with RoxygenReady** / Create Roxy-ready prepared script as a copy 
-- Manual editing of in-line description
-- **Compile** a package & documentation **by roxygen2**
-- **Install** your package
-- Test your package
-- Upload to github
-- Test if you can install from github 
 
-### Installation
+## Installation
 
 Install directly from github via devtools:
 
@@ -32,20 +50,28 @@ devtools::install_github(username ="vertesy" ,repo = "RoxygenReady", subdir = "R
 require("RoxygenReady")
 ```
 
-### Package content
+## Package content
 
-3 functions to generate inline description from your functions, using their names and arguments as input. These can be later parsed by Roxygen to proper package's help section
+A couple of functions to generate inline description from your functions, using their names and arguments as input. These can be later parsed by Roxygen to proper package's help section
 An example inline description:
 
 
-       #' descriptor_roxy
-       #'
-       #' Description ...
-       #' @param ls_funs list of functions to include in the package: list names should be exact function names in the NAMESPACE,list elements should be the functions.
-       #' @param OutputFile Full path and file name of the file the Roxygen-ready script is written to
-       #' @examples descriptor_roxy(ls_funs = funnames2, OutputFile = Package_FnP)
-       #' @export
+## How to create an R package (overview)
+> check: Workflow_to_Create_an_R_Package.R for details
 
-#### This will be parsed automatically to:
+1. Write or collect your favorite functions into an R script 
+-  Create a new package by **roxygen2**'s `create()` function, copy your function script.
+- **Prepare** in-line documentation **with RoxygenReady**
+- Manual editing of in-line description
+- **Compile** a package & documentation **by roxygen2**
+- **Install** your package locally
+- Test your package
+- Upload to github
+- Share it with others
 
-![Help_Example](Help_Example.png)
+<br>
+*Check out a great introduction to writing your first package in R by [Hillary Parker](http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/)*
+
+
+ <br/> <br/> <br/> <br/> <br/>
+[*edit the website*](https://github.com/vertesy/RoxygenReady/generated_pages/new)

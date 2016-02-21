@@ -57,9 +57,9 @@ document()
 setwd(RepositoryDir)
 install(PackageName)
 require("RoxygenReady")
-
 # Test your package ------------------------------------------------
 help("funnotator_RoxygenReady")
+help("print11more")
 
 # Test if you can install from github ------------------------------------------------
 devtools::install_github(username ="vertesy" ,repo = "TheCorvinas", subdir = "R/R_Packages/RoxygenReady")

@@ -200,5 +200,3 @@ descriptor_roxy_old <-function (FuncNames, outFile) {
 		write(code, file = outFile, append = T)
 	}
 }
-
-
