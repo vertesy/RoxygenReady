@@ -4,7 +4,9 @@ Prepare your R function library to be compiled into an R package by Roxygen-->
 
 [**Roxygen2**](https://cran.r-project.org/web/packages/roxygen2/index.html) is an awesome tool to easily create a package from your function library. 
 
-[**RoxygenReady**](https://github.com/vertesy/RoxygenReady) helps in creating the function annotations needed to compile a proper package (where help() works for your functions!) by **Roxygen2**.
+[**RoxygenReady**](https://github.com/vertesy/RoxygenReady) helps in creating the function annotations needed to compile a proper package by **Roxygen2**.
+
+The function annotation scaffold created by **RoxygenReady** spares you a lot of time documenting your functions easily and precisely. Your users gonna be grateful! The annotation it creates, can be automatically compiled into a package with a few lines of code. Packages are the standard way of distribution R code, as they integrate with other services, code sharing becomes much easier. (See the installation section for an examples)
 
 ## Workflow: stream lined package creation
 
