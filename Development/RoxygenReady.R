@@ -1,15 +1,15 @@
 ## RoxygenReady.R
 
 
-#' funnotator_RoxygenReady
+#' descriptor_roxy
 #'
 #' Compile and write out all functions documentation in a script for Roxygen (Extended version)
 #' @param FileWithFunctions An .R file containing all the function definitions of your library
 #' @param outFile Filename and path where the annotated version will be written out
-#' @examples funnotator_RoxygenReady (FileWithFunctions =  , outFile = kollapse(FileWithFunctions, ".annot.R", print = F))
+#' @examples descriptor_roxy (FileWithFunctions =  , outFile = kollapse(FileWithFunctions, ".annot.R", print = F))
 #' @export
 
-funnotator_RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions, ".annot.R", print = F)) {
+descriptor_roxy <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions, ".annot.R", print = F)) {
 	x = strsplit(FileWithFunctions, split = "/")[[1]]
 	ScriptName = x[length(x)]
 	write(kollapse("## ", ScriptName, "\n\n", print = F), file = outFile)
@@ -42,10 +42,11 @@ funnotator_RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWi
 	}
 }
 
+
 #' rr_extract_all_function_names_in_a_script
 #'
 #' Scan a script for function's defined there.
-#' @param inFile input file with function definitions to be scanned
+#' @param inFile Filename and path to be scanned
 #' @examples rr_extract_all_function_names_in_a_script (inFile =  )
 #' @export
 
@@ -65,7 +66,7 @@ rr_extract_all_function_names_in_a_script <-function (inFile) {
 #' rr_extract__all_descriptions_from_comment
 #'
 #' Scan a script for (descriptive) comments in the first line of each function's definition.
-#' @param inFile input file with function definitions to be scanned
+#' @param inFile Filename and path to be scanned
 #' @examples rr_extract__all_descriptions_from_comment (inFile =  )
 #' @export
 
@@ -85,7 +86,7 @@ rr_extract__all_descriptions_from_comment <-function (inFile) {
 #'
 #' get the defaults argument calls of a function
 #' @param function_to_parse Name of the function with the arguments of interest.
-#' @examples rr_extract_default_args (yaFun =  )
+#' @examples rr_extract_default_args (function_to_parse =  )
 #' @export
 
 rr_extract_default_args <-function (function_to_parse) {
@@ -95,14 +96,14 @@ rr_extract_default_args <-function (function_to_parse) {
 }
 
 
-#' funnotator_RoxygenReady.headerOnly
+#' descriptor_roxy.headerOnly
 #'
 #' Compile a single functions documentation for Roxygen
-#' @param function_to_parse Name of the function with the arguments of interest.
-#' @examples funnotator_RoxygenReady.headerOnly (function_to_parse =  )
+#' @param function_to_parse Name of the function to be annotated
+#' @examples descriptor_roxy.headerOnly (function_to_parse =  )
 #' @export
 
-funnotator_RoxygenReady.headerOnly <-function (function_to_parse) {
+descriptor_roxy.headerOnly <-function (function_to_parse) {
 	if (!is.function(function_to_parse)) {
 		any_print("No function called", function_to_parse)
 	}
@@ -128,15 +129,15 @@ funnotator_RoxygenReady.headerOnly <-function (function_to_parse) {
 }
 
 
-#' funnotator_RoxygenReady.singleFunction
+#' descriptor_roxy.singleFunction
 #'
 #' Compile and write out a single functions documentation for Roxygen
-#' @param function_to_parse Name of the function with the arguments of interest.
-#' @param outFile Filename and path where the annotated version will be written out
-#' @examples funnotator_RoxygenReady.singleFunction (function_to_parse =  , outFile = )
+#' @param function_to_parse Name of the function to be annotated
+#' @param OutputFile
+#' @examples descriptor_roxy.singleFunction (function_to_parse =  , OutputFile = documented_functions_FnP)
 #' @export
 
-funnotator_RoxygenReady.singleFunction <-function (function_to_parse, outFile) {
+descriptor_roxy.singleFunction <-function (function_to_parse, OutputFile = documented_functions_FnP) {
 	if (!is.function(function_to_parse)) {
 		any_print("No function called", function_to_parse)
 	}
@@ -156,27 +157,27 @@ funnotator_RoxygenReady.singleFunction <-function (function_to_parse, outFile) {
 	desc[[l(argz) + 5]] = kollapse(s, "@export")
 	Clipboard_Copy(desc)
 	print(desc, quote = F)
-	write(desc, file = outFile)
-	write("", file = outFile, append = T)
+	write(desc, file = documented_functions_FnP)
+	write("", file = documented_functions_FnP, append = T)
 	code_ = noquote(deparse(function_to_parse, width.cutoff = 100L))
 	code_ = print(gsub("	", "\t", code_, perl = T))
 	code = c(kollapse(funname, " <-", code_[1:2], print = F), code_[3:l(code_)], sep = "\n")
-	write(code, file = outFile, append = T)
+	write(code, file = documented_functions_FnP, append = T)
 }
 
 
 #' descriptor_roxy_old
 #'
 #' Compile and write out all functions documentation in a script for Roxygen
-#' @param FuncNames a vector of function names (of functions in the memory space) to be annotated
-#' @param outFile Filename and path where the annotated version will be written out
-#' @examples descriptor_roxy_old (FuncNames =  , outFile)
+#' @param ls_funs
+#' @param OutputFile
+#' @examples descriptor_roxy_old (ls_funs =  , OutputFile = documented_functions_FnP)
 #' @export
 
-descriptor_roxy_old <-function (FuncNames, outFile) {
-	write(kollapse("## ", substitute(FuncNames), " \n\n", print = F), file = outFile)
-	funnames = names(FuncNames)
-	for (i in 1:l(FuncNames)) {
+descriptor_roxy_old <-function (ls_funs, OutputFile = documented_functions_FnP) {
+	write(kollapse("## ", substitute(ls_funs), " \n\n", print = F), file = documented_functions_FnP)
+	funnames = names(ls_funs)
+	for (i in 1:l(ls_funs)) {
 		function_to_parse = get(funnames[i])
 		if (!is.function(function_to_parse)) {
 			any_print("No function called", funnames[i])
@@ -193,11 +194,11 @@ descriptor_roxy_old <-function (FuncNames, outFile) {
 		}
 		desc[[nr_of_args + 4]] = kollapse(s, "@examples ", match.call(), print = F)
 		desc[[nr_of_args + 5]] = kollapse(s, "@export \n")
-		write(desc, file = outFile, append = T)
+		write(desc, file = documented_functions_FnP, append = T)
 		code_ = noquote(deparse(function_to_parse, width.cutoff = 100L))
 		code_ = print(gsub("	", "\t", code_, perl = T))
 		code = c(kollapse(funnames[i], " <-", code_[1:2], print = F), code_[3:l(code_)], sep = "\n")
-		write(code, file = outFile, append = T)
+		write(code, file = documented_functions_FnP, append = T)
 	}
 }
 

@@ -5,6 +5,6 @@ Authors@R: person(given = "Abel", family = "Vertesy", email = "a.vertesy@hubrech
 Description: Prepare your function-script to compile into a package by Roxygen2
 Depends:
     R (>= 3.2.2)
-License: What license is it under?
+License: GNU GPL 3
 LazyData: true
 RoxygenNote: 5.0.1
