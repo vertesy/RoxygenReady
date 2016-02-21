@@ -38,45 +38,63 @@
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
         </div>
 
-        <h1>
-<a id="roxygenready" class="anchor" href="#roxygenready" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RoxygenReady</h1>
+        
 
-<p>Prepare your R function library to be compiled into an R package by Roxygen</p>
 
-<pre><code>  site under construction
-</code></pre>
+
+<p><a href="https://cran.r-project.org/web/packages/roxygen2/index.html"><strong>Roxygen2</strong></a> is an awesome tool to easily create a package from your function library. </p>
+
+<p><a href="https://github.com/vertesy/RoxygenReady"><strong>RoxygenReady</strong></a> helps in creating the function annotations needed to compile a proper package (where help() works for your functions!) by <strong>Roxygen2</strong>.</p>
 
 <h2>
-<a id="a-workflow-and-an-r-package-to-stream-line-package-creation" class="anchor" href="#a-workflow-and-an-r-package-to-stream-line-package-creation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>A Workflow and an R package to stream line package creation</h2>
-
-<p><a href="https://cran.r-project.org/web/packages/roxygen2/index.html">Roxygen2</a> is an awesome tool to easily create a package from your function library</p>
-
-<h3>
-<a id="workflow-how-to-create-an-r-package-overview" class="anchor" href="#workflow-how-to-create-an-r-package-overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Workflow: how to create an R package (overview)</h3>
-
-<blockquote>
-<p>check: Workflow_to_Create_an_R_Package.R for details</p>
-</blockquote>
+<a id="workflow-stream-lined-package-creation" class="anchor" href="#workflow-stream-lined-package-creation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Workflow: stream lined package creation</h2>
 
 <ol>
-<li>Write or collect your favourite functions into an R script </li>
 <li>
-<strong>Extract</strong> all <strong>function names</strong> from the script </li>
-<li>
-<strong>Prepare</strong> in-line documentation <strong>with RoxygenReady</strong> / Create Roxy-ready prepared script as a copy </li>
-<li>Manual editing of in-line description</li>
-<li>
-<strong>Compile</strong> a package &amp; documentation <strong>by roxygen2</strong>
+<p><em>You start out with your .R file containing your favorite scripts</em></p>
+
+<pre><code>print11more &lt;- function(n=1, m=1) { # a function with real added value
+    print (n+(11*m))
+}
+</code></pre>
 </li>
-<li>
-<strong>Install</strong> your package</li>
-<li>Test your package</li>
-<li>Upload to github</li>
-<li>Test if you can install from github </li>
 </ol>
 
-<h3>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h3>
+<ul>
+<li>
+<p><em>Create function annotation scaffold by *</em>RoxygenReady** from all functions in your script.*</p>
+
+<pre><code>#' print11more
+#'
+#' # a function with real added value
+#' @param n
+#' @param m
+#' @examples print11more(n=1, m=1)
+#' @export
+
+
+print11more &lt;- function(n=1, m=1) {
+    print (n+(11*m))
+}
+</code></pre>
+</li>
+<li>
+<p>After compiling and installing you package,</p>
+
+<ul>
+<li>your functions have a working help</li>
+</ul>
+</li>
+</ul>
+
+<p><img src="/Users/abelvertesy/RoxygenReady/Images/03.b.Final.png" alt=""></p>
+
+<ul>
+<li>You can share it on github and everyone can super easily install your package.</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>Install directly from github via devtools:</p>
 
@@ -85,25 +103,41 @@ devtools::install_github(username ="vertesy" ,repo = "RoxygenReady", subdir = "R
 require("RoxygenReady")
 </code></pre>
 
-<h3>
-<a id="package-content" class="anchor" href="#package-content" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Package content</h3>
+<h2>
+<a id="package-content" class="anchor" href="#package-content" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Package content</h2>
 
-<p>3 functions to generate inline description from your functions, using their names and arguments as input. These can be later parsed by Roxygen to proper package's help section
+<p>A couple of functions to generate inline description from your functions, using their names and arguments as input. These can be later parsed by Roxygen to proper package's help section
 An example inline description:</p>
 
-<pre><code>   #' descriptor_roxy
-   #'
-   #' Description ...
-   #' @param ls_funs list of functions to include in the package: list names should be exact function names in the NAMESPACE,list elements should be the functions.
-   #' @param OutputFile Full path and file name of the file the Roxygen-ready script is written to
-   #' @examples descriptor_roxy(ls_funs = funnames2, OutputFile = Package_FnP)
-   #' @export
-</code></pre>
+<h2>
+<a id="how-to-create-an-r-package-overview" class="anchor" href="#how-to-create-an-r-package-overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to create an R package (overview)</h2>
 
-<h4>
-<a id="this-will-be-parsed-automatically-to" class="anchor" href="#this-will-be-parsed-automatically-to" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This will be parsed automatically to:</h4>
+<blockquote>
+<p>check: Workflow_to_Create_an_R_Package.R for details</p>
+</blockquote>
 
-<p><img src="Help_Example.png" alt="Help_Example"></p>
+<ol>
+<li>Write or collect your favorite functions into an R script </li>
+<li> Create a new package by <strong>roxygen2</strong>'s <code>create()</code> function, copy your function script.</li>
+<li>
+<strong>Prepare</strong> in-line documentation <strong>with RoxygenReady</strong>
+</li>
+<li>Manual editing of in-line description</li>
+<li>
+<strong>Compile</strong> a package &amp; documentation <strong>by roxygen2</strong>
+</li>
+<li>
+<strong>Install</strong> your package locally</li>
+<li>Test your package</li>
+<li>Upload to github</li>
+<li>Share it with others</li>
+</ol>
+
+<p><br>
+<em>Check out a great introduction to writing your first package in R by <a href="http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">Hillary Parker</a></em></p>
+
+<p><br> <br> <br> <br> <br>
+<a href="https://github.com/vertesy/RoxygenReady/generated_pages/new"><em>edit the website</em></a></p>
       </section>
 
     </div>
