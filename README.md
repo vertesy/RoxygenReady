@@ -35,7 +35,7 @@ The function annotation scaffold created by **RoxygenReady** spares you a lot of
 - After compiling and installing you package,
 	- your functions have a working help
 
-![](/Users/abelvertesy/RoxygenReady/Images/03.b.Final.png)
+![](https://raw.githubusercontent.com/vertesy/RoxygenReady/master/Images/03.b.Final.png)
 
 
 - You can share it on github and everyone can super easily install your package.
@@ -44,21 +44,22 @@ The function annotation scaffold created by **RoxygenReady** spares you a lot of
 
 ## Installation
 
-Install directly from github via devtools:
+Install directly from github via devtools with one R command:
 
-```
-# install.packages("devtools")
-devtools::install_github(username ="vertesy" ,repo = "RoxygenReady", subdir = "RoxygenReady")
-require("RoxygenReady")
-```
+<!--    devtools::install_github(repo = "vertesy/RoxygenReady/", subdir = "RoxygenReady")-->
+    devtools::install_github(repo = "vertesy/RoxygenReady/RoxygenReady")
+    
+...then simply load the package:
+
+    require("RoxygenReady")
+
 
 ## Package content
 
-A couple of functions to generate inline description from your functions, using their names and arguments as input. These can be later parsed by Roxygen to proper package's help section
-An example inline description:
+A couple of functions to generate inline description from your functions, using their names and arguments as default input. These can be later parsed by Roxygen to an R package's help section.
 
 
-## How to create an R package (overview)
+## How to create an R package
 > check: Workflow_to_Create_an_R_Package.R for details
 
 1. Write or collect your favorite functions into an R script 
@@ -72,7 +73,10 @@ An example inline description:
 - Share it with others
 
 <br>
-*Check out a great introduction to writing your first package in R by [Hillary Parker](http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/)*
+
+      Check: Workflow_to_Create_an_R_Package.R for details
+
+*Also check out a great introduction about writing your first package in R by [Hillary Parker](http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/)*
 
 
  <br/> <br/> <br/> <br/> <br/>
