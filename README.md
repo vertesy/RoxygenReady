@@ -8,7 +8,7 @@ Prepare your R function library to be compiled into an R package by Roxygen-->
 
 The function annotation scaffold created by **RoxygenReady** spares you a lot of time documenting your functions easily and precisely. Your users gonna be grateful! The annotation it creates, can be automatically compiled into a package with a few lines of code. Packages are the standard way of distribution R code, as they integrate with other services, code sharing becomes much easier. (See the installation section for an examples)
 
-## Workflow: stream lined package creation
+## Workflow: streamlined package creation
 
 1. *You start out with your .R file containing your favorite scripts*
 
@@ -16,7 +16,7 @@ The function annotation scaffold created by **RoxygenReady** spares you a lot of
 			print (n+(11*m))
 		}
 
-- *Create function annotation scaffold by **RoxygenReady** from all functions in your script.*
+- *Create function annotation scaffold by* ***RoxygenReady*** *from all functions in your script.*
 
 		#' print11more
 		#'
@@ -38,13 +38,13 @@ The function annotation scaffold created by **RoxygenReady** spares you a lot of
 ![](https://raw.githubusercontent.com/vertesy/RoxygenReady/master/Images/03.b.Final.png)
 
 
-- You can share it on github and everyone can super easily install your package.
+- You can share it on **GitHub** and everyone can super easily install your package.
 	
 
 
 ## Installation
 
-Install directly from github via devtools with one R command:
+Install directly from **GitHub** via **devtools** with one R command:
 
 <!--    devtools::install_github(repo = "vertesy/RoxygenReady/", subdir = "RoxygenReady")-->
     devtools::install_github(repo = "vertesy/RoxygenReady/RoxygenReady")
@@ -69,7 +69,7 @@ A couple of functions to generate inline description from your functions, using 
 - **Compile** a package & documentation **by roxygen2**
 - **Install** your package locally
 - Test your package
-- Upload to github
+- Upload to **GitHub**
 - Share it with others
 
 <br>
