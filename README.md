@@ -10,7 +10,7 @@ The function annotation scaffold created by **RoxygenReady** spares you a lot of
 
 ## Workflow: streamlined package creation
 
-1. *You start out with your .R file containing your favorite scripts*
+1. *You start out with your .R file containing your favorite functions.*
 
  		print11more <- function(n=1, m=1) { # a function with real added value
 			print (n+(11*m))
@@ -33,12 +33,12 @@ The function annotation scaffold created by **RoxygenReady** spares you a lot of
 
 
 - After compiling and installing you package,
-	- your functions have a working help
+	- your functions have a working help:
 
 ![](https://raw.githubusercontent.com/vertesy/RoxygenReady/master/Images/03.b.Final.png)
 
 
-- You can share it on **GitHub** and everyone can super easily install your package.
+- You can share your package on **GitHub**, and everyone can super easily install it.
 	
 
 
