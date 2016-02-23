@@ -6,7 +6,7 @@ rm(list=ls(all = TRUE));
 try(dev.off())
 
 # Functions ------------------------
-try (source ('/Users/abelvertesy/TheCorvinas/R/Rfunctions_AV.R'),silent= F)
+try (source ('/Users/abelvertesy/TheCorvinas/R/CodeAndRoll.R'),silent= F)
 # install.packages("roxygen2")
 library(devtools, roxygen2)
 
