@@ -1,12 +1,51 @@
 ## RoxygenReady.R
 
+#' kollapse
+#'
+#' # paste0 values and string to one string. It also prints the results (good for a quick check)
+#' @param ...
+#' @param print
+#' @examples kollapse("Hello ", "you ", 3, ", " , 11, " year old kids.")
+#' @export
+
+kollapse <- function(..., print =T) {
+	if (print==T) {print (paste0(c(...), collapse = "")) }
+	paste0(c(...), collapse = "")
+}
+
+#' substrRight
+#'
+#' # Take the right substring of a string
+#' @param x
+#' @param n
+#' @examples substrRight  ("Not cool", n=4)
+#' @export
+
+substrRight <- function (x, n){
+	substr(x, nchar(x)-n+1, nchar(x))
+}
+
+#' toClipboard
+#'
+#' # Copy an R-object to your clipboard on OS X.
+#' @param x
+#' @param sep
+#' @param header
+#' @param row.names
+#' @param col.names
+#' @examples toClipboard(11)
+#' @export
+
+toClipboard <- function(x, sep="\t", header=FALSE, row.names=FALSE, col.names =F) { # Copy an R-object to your clipboard on OS X.
+	write.table(x, pipe("pbcopy"), sep=sep, row.names=row.names, col.names =col.names, quote = F)
+}
 
 #' RoxygenReady.FileToFile
 #'
 #' Read in a file, annotate and write out all functions documentation with Roxygen skeleton (FileToFile)
 #' @param FileWithFunctions An .R file containing all the function definitions of your library
 #' @param outFile Filename and path where the annotated version will be written out
-#' @examples funnotator_RoxygenReady (FileWithFunctions =  , outFile = kollapse(FileWithFunctions, ".annot.R", print = F))
+#' @examples
 #' @export
 
 RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions, ".annot.R", print = F)) {
@@ -16,7 +55,7 @@ RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions
 	list_of_functions = rr_extract_all_function_names_in_a_script(FileWithFunctions)
 	funnames = names(list_of_functions)
 	commentz = rr_extract__all_descriptions_from_comment(FileWithFunctions)
-	for (i in 1:l(list_of_functions)) {
+	for (i in 1:length(list_of_functions)) {
 		function_to_parse = list_of_functions[[i]]
 		if (!is.function(function_to_parse)) {
 			any_print("     No function called: ", funnames[i])
@@ -27,7 +66,7 @@ RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions
 		desc[[2]] = s
 		desc[[3]] = kollapse(s, commentz[i], print = F)
 		argz = names(formals(fun = function_to_parse))
-		nr_of_args = l(argz)
+		nr_of_args = length(argz)
 		for (j in 1:nr_of_args) {
 			desc[[j + 3]] = kollapse(s, "@param ", argz[j], " ", print = F)
 		}
@@ -37,7 +76,7 @@ RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions
 		write(desc, file = outFile, append = T)
 		code_ = noquote(deparse(function_to_parse, width.cutoff = 100L))
 		code_ = gsub(paste0("  ", "  "), "\t", code_, perl = T)
-		code = c(kollapse(funnames[i], " <-", code_[1:2], print = F), code_[3:l(code_)], sep = "\n")
+		code = c(kollapse(funnames[i], " <-", code_[1:2], print = F), code_[3:length(code_)], sep = "\n")
 		write(code, file = outFile, append = T)
 	}
 }
@@ -117,8 +156,8 @@ RoxygenReady.MemoryToClipboard <-function (function_to_parse) {
 		i = i + 1
 		desc[[i + 1]] = kollapse(s, "@param ", a, " ", print = F)
 	}
-	desc[[l(argz) + 4]] = kollapse(s, "@examples ", match.call(), print = F)
-	desc[[l(argz) + 5]] = kollapse(s, "@export")
+	desc[[:length(argz) + 4]] = kollapse(s, "@examples ", match.call(), print = F)
+	desc[[:length(argz) + 5]] = kollapse(s, "@export")
 	toClipboard(desc)
 	print(desc, quote = F)
 	print("", quote = F)
@@ -151,15 +190,15 @@ RoxygenReady.singleFunction.MemoryToFile <-function (function_to_parse, outFile)
 		i = i + 1
 		desc[[i + 1]] = kollapse(s, "@param ", a, " ", print = F)
 	}
-	desc[[l(argz) + 4]] = kollapse(s, "@examples ", match.call(), print = F)
-	desc[[l(argz) + 5]] = kollapse(s, "@export")
+	desc[[:length(argz) + 4]] = kollapse(s, "@examples ", match.call(), print = F)
+	desc[[:length(argz) + 5]] = kollapse(s, "@export")
 	toClipboard(desc)
 	print(desc, quote = F)
 	write(desc, file = outFile)
 	write("", file = outFile, append = T)
 	code_ = noquote(deparse(function_to_parse, width.cutoff = 100L))
 	code_ = print(gsub("	", "\t", code_, perl = T))
-	code = c(kollapse(funname, " <-", code_[1:2], print = F), code_[3:l(code_)], sep = "\n")
+	code = c(kollapse(funname, " <-", code_[1:2], print = F), code_[3:length(code_)], sep = "\n")
 	write(code, file = outFile, append = T)
 }
 
@@ -175,7 +214,7 @@ RoxygenReady.singleFunction.MemoryToFile <-function (function_to_parse, outFile)
 RoxygenReady.old <-function (FuncNames, outFile) {
 	write(kollapse("## ", substitute(FuncNames), " \n\n", print = F), file = outFile)
 	funnames = names(FuncNames)
-	for (i in 1:l(FuncNames)) {
+	for (i in 1:length(FuncNames)) {
 		function_to_parse = get(funnames[i])
 		if (!is.function(function_to_parse)) {
 			any_print("No function called", funnames[i])
@@ -186,7 +225,7 @@ RoxygenReady.old <-function (FuncNames, outFile) {
 		desc[[2]] = s
 		desc[[3]] = kollapse(s, "Description ...", print = F)
 		argz = names(formals(fun = function_to_parse))
-		nr_of_args = l(argz)
+		nr_of_args =length(argz)
 		for (j in 1:nr_of_args) {
 			desc[[j + 3]] = kollapse(s, "@param ", argz[j], " ", print = F)
 		}
@@ -195,7 +234,7 @@ RoxygenReady.old <-function (FuncNames, outFile) {
 		write(desc, file = outFile, append = T)
 		code_ = noquote(deparse(function_to_parse, width.cutoff = 100L))
 		code_ = print(gsub("	", "\t", code_, perl = T))
-		code = c(kollapse(funnames[i], " <-", code_[1:2], print = F), code_[3:l(code_)], sep = "\n")
+		code = c(kollapse(funnames[i], " <-", code_[1:2], print = F), code_[3length(code_)], sep = "\n")
 		write(code, file = outFile, append = T)
 	}
 }
