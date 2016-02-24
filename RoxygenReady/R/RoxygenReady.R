@@ -1,15 +1,15 @@
 ## RoxygenReady.R
 
 
-#' funnotator_RoxygenReady
+#' RoxygenReady.FileToFile
 #'
-#' Compile and write out all functions documentation in a script for Roxygen (Extended version)
+#' Read in a file, annotate and write out all functions documentation with Roxygen skeleton (FileToFile)
 #' @param FileWithFunctions An .R file containing all the function definitions of your library
 #' @param outFile Filename and path where the annotated version will be written out
 #' @examples funnotator_RoxygenReady (FileWithFunctions =  , outFile = kollapse(FileWithFunctions, ".annot.R", print = F))
 #' @export
 
-funnotator_RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions, ".annot.R", print = F)) {
+RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions, ".annot.R", print = F)) {
 	x = strsplit(FileWithFunctions, split = "/")[[1]]
 	ScriptName = x[length(x)]
 	write(kollapse("## ", ScriptName, "\n\n", print = F), file = outFile)
@@ -19,8 +19,8 @@ funnotator_RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWi
 	for (i in 1:l(list_of_functions)) {
 		function_to_parse = list_of_functions[[i]]
 		if (!is.function(function_to_parse)) {
-			any_print("No function called", funnames[i])
-		}
+			any_print("     No function called: ", funnames[i])
+		} else { print(funnames[i]) }
 		s = "#' "
 		desc = NULL
 		desc[[1]] = kollapse(s, funnames[i], " ", print = F)
@@ -94,7 +94,6 @@ rr_extract_default_args <-function (function_to_parse) {
 	return(paste(names(a), a, sep = " = ", collapse = ", "))
 }
 
-
 #' funnotator_RoxygenReady.headerOnly
 #'
 #' Compile a single functions documentation for Roxygen
@@ -102,7 +101,7 @@ rr_extract_default_args <-function (function_to_parse) {
 #' @examples funnotator_RoxygenReady.headerOnly (function_to_parse =  )
 #' @export
 
-funnotator_RoxygenReady.headerOnly <-function (function_to_parse) {
+RoxygenReady.MemoryToClipboard <-function (function_to_parse) {
 	if (!is.function(function_to_parse)) {
 		any_print("No function called", function_to_parse)
 	}
@@ -120,7 +119,7 @@ funnotator_RoxygenReady.headerOnly <-function (function_to_parse) {
 	}
 	desc[[l(argz) + 4]] = kollapse(s, "@examples ", match.call(), print = F)
 	desc[[l(argz) + 5]] = kollapse(s, "@export")
-	Clipboard_Copy(desc)
+	toClipboard(desc)
 	print(desc, quote = F)
 	print("", quote = F)
 	print("", quote = F)
@@ -128,7 +127,7 @@ funnotator_RoxygenReady.headerOnly <-function (function_to_parse) {
 }
 
 
-#' funnotator_RoxygenReady.singleFunction
+#' RoxygenReady.singleFunction.MemoryToFile
 #'
 #' Compile and write out a single functions documentation for Roxygen
 #' @param function_to_parse Name of the function with the arguments of interest.
@@ -136,7 +135,7 @@ funnotator_RoxygenReady.headerOnly <-function (function_to_parse) {
 #' @examples funnotator_RoxygenReady.singleFunction (function_to_parse =  , outFile = )
 #' @export
 
-funnotator_RoxygenReady.singleFunction <-function (function_to_parse, outFile) {
+RoxygenReady.singleFunction.MemoryToFile <-function (function_to_parse, outFile) {
 	if (!is.function(function_to_parse)) {
 		any_print("No function called", function_to_parse)
 	}
@@ -154,7 +153,7 @@ funnotator_RoxygenReady.singleFunction <-function (function_to_parse, outFile) {
 	}
 	desc[[l(argz) + 4]] = kollapse(s, "@examples ", match.call(), print = F)
 	desc[[l(argz) + 5]] = kollapse(s, "@export")
-	Clipboard_Copy(desc)
+	toClipboard(desc)
 	print(desc, quote = F)
 	write(desc, file = outFile)
 	write("", file = outFile, append = T)
@@ -165,7 +164,7 @@ funnotator_RoxygenReady.singleFunction <-function (function_to_parse, outFile) {
 }
 
 
-#' descriptor_roxy_old
+#' RoxygenReady.old
 #'
 #' Compile and write out all functions documentation in a script for Roxygen
 #' @param FuncNames a vector of function names (of functions in the memory space) to be annotated
@@ -173,7 +172,7 @@ funnotator_RoxygenReady.singleFunction <-function (function_to_parse, outFile) {
 #' @examples descriptor_roxy_old (FuncNames =  , outFile)
 #' @export
 
-descriptor_roxy_old <-function (FuncNames, outFile) {
+RoxygenReady.old <-function (FuncNames, outFile) {
 	write(kollapse("## ", substitute(FuncNames), " \n\n", print = F), file = outFile)
 	funnames = names(FuncNames)
 	for (i in 1:l(FuncNames)) {
