@@ -99,7 +99,6 @@ A couple of functions to generate inline description from your functions, using 
 
 1. Go through the [example scripts](https://github.com/vertesy/RoxygenReady/tree/master/Examples) to understand how the package works.
 
-
 - You can also check [Workflow_to_Create_an_R_Package.R](https://github.com/vertesy/RoxygenReady/blob/master/Workflow_to_Create_an_R_Package.R) for more details 
 
 - And maybe check out a great introduction about writing your first package in R by [Hillary Parker](http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/)
