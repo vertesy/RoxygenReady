@@ -2,7 +2,7 @@
 # Workflow_to_Create_an_R_Package.R
 ######################################################################################################
 # source("/Users/abelvertesy/RoxygenReady/Workflow_to_Create_an_R_Package.R")
-rm(list=ls(all = TRUE));
+rm(list=ls(all.names = TRUE));
 try(dev.off())
 
 # Functions ------------------------
@@ -20,7 +20,7 @@ PackageDir = kollapse(RepositoryDir, PackageName)
 Package_FnP = 	kollapse(PackageDir, "/R/", fname)
 # file.exists(Package_FnP)
 # dir.exists(PackageDir)
-DESCRIPTION <- list("Title" = "Package documentation generator ",
+DESCRIPTION <- list("Title" = "A Roxygen Skeleton Parser",
 					"Authors@R" = 'person(given = "Abel", family = "Vertesy", email = "a.vertesy@hubrecht.eu", role = c("aut", "cre"))',
 					"Description" = "Prepare your function-script to compile into a package by Roxygen2",
 					"License" = "GNU GPL 3"
@@ -37,7 +37,7 @@ file.edit(Package_FnP)
 # Extract all function names from the script ------------------------------------------------
 source(Package_FnP)
 
-funnotator_RoxygenReady(Package_FnP)
+RoxygenReady(Package_FnP)
 
 # replace output files ------------------------------------------------
 BackupOldFile = 	kollapse(Package_FnP, ".bac", print = F)
@@ -57,9 +57,10 @@ document()
 setwd(RepositoryDir)
 install(PackageName)
 require("RoxygenReady")
+
 # Test your package ------------------------------------------------
-help("funnotator_RoxygenReady")
-help("print11more")
+help("RoxygenReady")
+# help("print11more") # not in package any more
 
 # Test if you can install from github ------------------------------------------------
 devtools::install_github(username ="vertesy" ,repo = "TheCorvinas", subdir = "R/R_Packages/RoxygenReady")
