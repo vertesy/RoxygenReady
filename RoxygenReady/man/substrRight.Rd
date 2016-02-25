@@ -7,7 +7,7 @@
 substrRight(x, n)
 }
 \description{
-# Take the right substring of a string
+Take the right substring of a string
 }
 \examples{
 substrRight  ("Not cool", n=4)

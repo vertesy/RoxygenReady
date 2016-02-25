@@ -7,7 +7,7 @@
 rr_extract_all_descriptions_from_comment(inFile)
 }
 \arguments{
-\item{inFile}{input file with function definitions to be scanned}
+\item{inFile}{Filename and path to be scanned}
 }
 \description{
 Scan a script for (descriptive) comments in the first line of each function's definition.

@@ -7,7 +7,7 @@
 kollapse(..., print = T)
 }
 \description{
-# paste0 values and string to one string. It also prints the results (good for a quick check)
+paste0 values and string to one string. It also prints the results (good for a quick check)
 }
 \examples{
 kollapse("Hello ", "you ", 3, ", " , 11, " year old kids.")

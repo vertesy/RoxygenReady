@@ -8,7 +8,7 @@ toClipboard(x, sep = "\\t", header = FALSE, row.names = FALSE,
   col.names = F)
 }
 \description{
-# Copy an R-object to your clipboard on OS X.
+Copy an R-object to your clipboard on OS X.
 }
 \examples{
 toClipboard(11)

@@ -103,22 +103,6 @@ rr_extract_all_functions_from_a_script <-function (inFile) {
 }
 
 
-#' rr_extract_all_descriptions_from_comment
-#'
-#' Scan a script for (descriptive) comments in the first line of each function's definition.
-#' @param inFile input file with function definitions to be scanned
-#' @examples rr_extract_all_descriptions_from_comment (inFile =  )
-#' @export
-
-rr_extract_all_descriptions_from_comment_annot <-function (inFile) {
-	ScriptAsStringsPerLine = readLines(inFile)
-	patt = "^#'$"
-	index = grep(patt, ScriptAsStringsPerLine, perl = T)+1
-	FirstLineComments = gsub("^#'[[:space:]]*", "", ScriptAsStringsPerLine[index])
-	return(FirstLineComments)
-}
-
-
 #' rr_extract_default_args
 #'
 #' get the defaults argument calls of a function
@@ -130,6 +114,39 @@ rr_extract_default_args <-function (function_to_parse) {
 	a = as.named.vector(formals(function_to_parse))
 	a[a == ""] = " "
 	return(paste(names(a), a, sep = " = ", collapse = ", "))
+}
+
+#' rr_extract_all_descriptions_from_comment
+#'
+#' Scan a script for (descriptive) comments in the first line of each function's definition.
+#' @param inFile Filename and path to be scanned
+#' @examples rr_extract_all_descriptions_from_comment (inFile =  )
+#' @export
+
+rr_extract_all_descriptions_from_comment <-function (inFile) {
+	ScriptAsStringsPerLine = readLines(inFile)
+	patt = " *<- *function *\\(.+"
+	index = grep(patt, ScriptAsStringsPerLine, perl = T)
+	FirstLineComments = gsub(".+# ", "", ScriptAsStringsPerLine[index])
+	funnames = gsub(patt, "", ScriptAsStringsPerLine[index])
+	funnames = as.list(gsub("[[:space:]]*$", "", funnames))
+	names(FirstLineComments) = funnames
+	return(FirstLineComments)
+}
+
+#' rr_extract_all_descriptions_from_comment_annot
+#'
+#' Scan a script for (descriptive) comments in the 3d line of each function's Roxygen skeleton.
+#' @param inFile input file with function definitions to be scanned
+#' @examples rr_extract_all_descriptions_from_comment_annot (inFile =  )
+#' @export
+
+rr_extract_all_descriptions_from_comment_annot <-function (inFile) {
+	ScriptAsStringsPerLine = readLines(inFile)
+	patt = "^#'$"
+	index = grep(patt, ScriptAsStringsPerLine, perl = T)+1
+	FirstLineComments = gsub("^#'[[:space:]]*", "", ScriptAsStringsPerLine[index])
+	return(FirstLineComments)
 }
 
 #' rr_function_overview_document

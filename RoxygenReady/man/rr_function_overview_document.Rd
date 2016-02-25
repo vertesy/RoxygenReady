@@ -5,12 +5,14 @@
 \title{rr_function_overview_document}
 \usage{
 rr_function_overview_document(inFile, outFile = paste0(inFile,
-  ".FunctionOverview.md"))
+  ".FunctionOverview.md"), RoxygenReadyInputFile = T)
 }
 \arguments{
 \item{inFile}{File with the funcitons to be listed and displayed in a .md file.}
 
 \item{outFile}{The location of the created markdown document with the list of functions in the  "inFile". By default, it saves next to it, with the extension ".FunctionOverview.md".}
+
+\item{RoxygenReadyInputFile}{Set to FALSE if the input script has the comments of the 1st line of the function definition instead of having it in a Roxygen Skeleton.}
 }
 \description{
 Create a Markdown document with a numbered list of all functions and their descriptions from the "inFile", saved right next to it!
