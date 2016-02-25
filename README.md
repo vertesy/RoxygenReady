@@ -1,22 +1,32 @@
-<!--# RoxygenReady
-Prepare your R function library to be compiled into an R package by Roxygen-->
-<!--      site under construction-->
+## Create Roxygen skeletons for all of your functions before compiling it into an R package.
+
 
 [**Roxygen2**](https://cran.r-project.org/web/packages/roxygen2/index.html) is an awesome tool to easily create a package from your function library. 
 
-[**RoxygenReady**](https://github.com/vertesy/RoxygenReady) helps in creating the function annotations needed to compile a proper package by **Roxygen2**.
+[**RoxygenReady**](https://github.com/vertesy/RoxygenReady) helps in creating the function annotations needed to compile a proper package by **Roxygen2**. 
 
-The function annotation scaffold created by **RoxygenReady** spares you a lot of time documenting your functions easily and precisely. Your users gonna be grateful! The annotation it creates, can be automatically compiled into a package with a few lines of code. Packages are the standard way of distribution R code, as they integrate with other services, code sharing becomes much easier. (See the installation section for an examples)
+More precisely, **RoxygenReady** creates *Roxygen skeletons*, a certain format for inline function annotation (see below). By so, it spares you a lot of time documenting your functions easily and precisely. 
 
-## Workflow: streamlined package creation
+The annotation skeleton it creates, can be automatically compiled into a package with a few lines of code. Packages are the standard way of distribution R code, as they integrate with other services, code sharing becomes much easier. *See the installation section for an example.*
 
-1. *You start out with your .R file containing your favorite functions.*
+##### You can pass a whole file to **RoxygenReady**, and it will create *Roxygen skeletons* for all functions defined in the file!
+
+<br>
+**RoxygenReady** is a project maintained by @vertesy.
+
+<br><br>
+## Workflow: *a streamlined package creation*
+
+### 1. You start out with your .R file containing your favorite functions.
 
  		print11more <- function(n=1, m=1) { # a function with real added value
 			print (n+(11*m))
 		}
 
-- *Create function annotation scaffold by* ***RoxygenReady*** *from all functions in your script.*
+	- RoxygenReady expects a short description in the first line, after the `{` character, which will be parsed into the description field of the function annotation.
+
+
+### 2. Construct *Roxygen skeletons* RoxygenReady from all functions in your script.
 
 		#' print11more
 		#'
@@ -32,16 +42,26 @@ The function annotation scaffold created by **RoxygenReady** spares you a lot of
 		}
 
 
-- After compiling and installing you package,
-	- your functions have a working help:
+### 3. Compile your package by roxygen.
+
+	- See section: **How to create an R package?**
+
+
+### 4. Installing your package and share via GitHub!
+
+
+       install.packages(RoxygenReady)
+       require(RoxygenReady)
+
+Browse for help on your functions `help(print11more)`:
 
 ![](https://raw.githubusercontent.com/vertesy/RoxygenReady/master/Images/03.b.Final.png)
 
 
-- You can share your package on **GitHub**, and everyone can super easily install it.
+You can share your package on **GitHub**, and everyone can super easily install it, like this package: read on!
 	
 
-
+<br><br>
 ## Installation
 
 Install directly from **GitHub** via **devtools** with one R command:
@@ -53,24 +73,23 @@ Install directly from **GitHub** via **devtools** with one R command:
 
     require("RoxygenReady")
 
-
+<br><br>
 ## Package content
 
 A couple of functions to generate inline description from your functions, using their names and arguments as default input. These can be later parsed by Roxygen to an R package's help section.
 
-
-## How to create an R package
+<br><br>
+## How to create an R package?
 > check: Workflow_to_Create_an_R_Package.R for details
 
-1. Write or collect your favorite functions into an R script 
--  Create a new package by **roxygen2**'s `create()` function, copy your function script.
+1. Write or collect your favorite functions into an R script.
 - **Prepare** in-line documentation **with RoxygenReady**
-- Manual editing of in-line description
+- Create a new package by **roxygen2**'s `create()` function, copy your functions script.
+- Explain parameters in the in-line annotation; manually :-(
 - **Compile** a package & documentation **by roxygen2**
 - **Install** your package locally
 - Test your package
-- Upload to **GitHub**
-- Share it with others
+- Share it with others via **GitHub**
 
 <br>
 
@@ -81,3 +100,5 @@ A couple of functions to generate inline description from your functions, using 
 
  <br/> <br/> <br/> <br/> <br/>
 [*edit the website*](https://github.com/vertesy/RoxygenReady/generated_pages/new)
+
+<!--[*edit the website*](https://github.com/roxygenready/roxygenready.github.io/generated_pages/new)-->
