@@ -10,7 +10,7 @@ rr_extract_default_args(function_to_parse)
 \item{function_to_parse}{Name of the function with the arguments of interest.}
 }
 \description{
-get the defaults argument calls of a function
+Get the default argument calls of a function
 }
 \examples{
 rr_extract_default_args (yaFun =  )

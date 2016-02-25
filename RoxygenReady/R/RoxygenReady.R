@@ -3,8 +3,8 @@
 #' kollapse
 #'
 #'  paste0 values and string to one string. It also prints the results (good for a quick check)
-#' @param ...
-#' @param print
+#' @param ... variables (strings, vectors) to be collapsed
+#' @param print Print the results to the terminal. TRUE by default.
 #' @examples kollapse("Hello ", "you ", 3, ", " , 11, " year old kids.")
 #' @export
 
@@ -15,9 +15,9 @@ kollapse <- function(..., print =T) {
 
 #' substrRight
 #'
-#'  Take the right substring of a string
-#' @param x
-#' @param n
+#' Take the right substring of a string
+#' @param x a character vector.
+#' @param n integer. The number of elements on the right to be kept.
 #' @examples substrRight  ("Not cool", n=4)
 #' @export
 
@@ -28,11 +28,11 @@ substrRight <- function (x, n){
 #' toClipboard
 #'
 #' Copy an R-object to your clipboard on OS X.
-#' @param x
-#' @param sep
-#' @param header
-#' @param row.names
-#' @param col.names
+#' @param x string
+#' @param sep the field separator string. Values within each row of x are separated by this string.
+#' @param header TRUE if the variable has a header line. FALSE by default.
+#' @param row.names either a logical value indicating whether the row names of x are to be written along with x, or a character vector of row names to be written.
+#' @param col.names either a logical value indicating whether the column names of x are to be written along with x, or a character vector of column names to be written. See the section on ‘CSV files’ for the meaning of col.names = NA.
 #' @examples toClipboard(11)
 #' @export
 
@@ -46,10 +46,10 @@ toClipboard <- function(x, sep="\t", header=FALSE, row.names=FALSE, col.names =F
 #' @param FileWithFunctions An .R file containing all the function definitions of your library
 #' @param outFile Filename and path where the annotated version will be written out
 #' @param overview If true, a function overview .md file is created next to your input file. See rr_function_overview_document() for details.
-#' @examples
+#' @examples RoxygenReady (FileWithFunctions, outFile = kollapse(FileWithFunctions, ".annot.R", print = F), overview = T)
 #' @export
 
-RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions, ".annot.R", print = F, overview = T)) {
+RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions, ".annot.R", print = F), overview = T) {
 	x = strsplit(FileWithFunctions, split = "/")[[1]]
 	ScriptName = x[length(x)]
 	write(kollapse("## ", ScriptName, "\n\n", print = F), file = outFile)
@@ -79,7 +79,7 @@ RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions
 		code_ = gsub(paste0("  ", "  "), "\t", code_, perl = T)
 		code = c(kollapse(funnames[i], " <-", code_[1:2], print = F), code_[3:length(code_)], sep = "\n")
 		write(code, file = outFile, append = T)
-		if (overview) { rr_function_overview_document(FileWithFunctions) }
+		if (overview) { rr_function_overview_document(FileWithFunctions, RoxygenReadyInputFile = F) }
 	}
 }
 
@@ -105,7 +105,7 @@ rr_extract_all_functions_from_a_script <-function (inFile) {
 
 #' rr_extract_default_args
 #'
-#' get the defaults argument calls of a function
+#' Get the default argument calls of a function
 #' @param function_to_parse Name of the function with the arguments of interest.
 #' @examples rr_extract_default_args (yaFun =  )
 #' @export
@@ -161,16 +161,15 @@ rr_extract_all_descriptions_from_comment_annot <-function (inFile) {
 rr_function_overview_document <-function (inFile, outFile = paste0(inFile, ".FunctionOverview.md"), RoxygenReadyInputFile=T ) { # Create a Markdown document with a numbered list of all functions and their descriptions from the "inFile", saved right next to it!
 	FunctionNames = names(rr_extract_all_functions_from_a_script(inFile) )
 	n = length(FunctionNames)
-	FunctionNames = FunctionNames[order(FunctionNames)]
+	# FunctionNames = FunctionNames[order(FunctionNames)]
 	FunctionNames = paste0("### ", (1:n), ". ",names(rr_extract_all_functions_from_a_script(inFile) ) )
 
 	if (RoxygenReadyInputFile) { 	Descriptions = paste0("- ", rr_extract_all_descriptions_from_comment_annot(inFile) ) 	}
 	if ( !RoxygenReadyInputFile) {	Descriptions = paste0("- ", rr_extract_all_descriptions_from_comment(inFile) ) 			}
-	Descriptions = Descriptions[order(FunctionNames)] # Reorder Alphanumerically
-
+	# Descriptions = Descriptions[order(FunctionNames)] # Reorder Alphanumerically - does not work
 	body = paste0( "\n\n", FunctionNames, "\n", Descriptions)
 	write("## Function Overview", file = outFile)
-	write("You find the list of function of this library below. For details, please use the `help()` function. <br>", file = outFile, append = T)
+	write("You find the list of function of this library below. For details, please use the `help()` function, or browse the [source code](). <br>", file = outFile, append = T)
 	write(body, file = outFile, append = T)
 }
 

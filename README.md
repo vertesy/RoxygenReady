@@ -78,6 +78,9 @@ Install directly from **GitHub** via **devtools** with one R command:
 
 A couple of functions to generate inline description from your functions, using their names and arguments as default input. These can be later parsed by Roxygen to an R package's help section.
 
+1. [Check out the list of functions](https://github.com/vertesy/RoxygenReady/wiki/Function-Overview)
+2. [Browse the code of the functions](https://github.com/vertesy/RoxygenReady/blob/master/RoxygenReady/R/RoxygenReady.R)
+
 <br><br>
 ## How to create an R package?
 > check: Workflow_to_Create_an_R_Package.R for details

@@ -6,6 +6,11 @@
 \usage{
 kollapse(..., print = T)
 }
+\arguments{
+\item{...}{variables (strings, vectors) to be collapsed}
+
+\item{print}{Print the results to the terminal. TRUE by default.}
+}
 \description{
 paste0 values and string to one string. It also prints the results (good for a quick check)
 }

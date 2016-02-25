@@ -5,7 +5,7 @@
 \title{RoxygenReady.FileToFile}
 \usage{
 RoxygenReady(FileWithFunctions, outFile = kollapse(FileWithFunctions,
-  ".annot.R", print = F, overview = T))
+  ".annot.R", print = F), overview = T)
 }
 \arguments{
 \item{FileWithFunctions}{An .R file containing all the function definitions of your library}
@@ -16,5 +16,8 @@ RoxygenReady(FileWithFunctions, outFile = kollapse(FileWithFunctions,
 }
 \description{
 Read in a file, annotate and write out all functions documentation with Roxygen skeleton (FileToFile)
+}
+\examples{
+RoxygenReady (FileWithFunctions, outFile = kollapse(FileWithFunctions, ".annot.R", print = F), overview = T)
 }
 

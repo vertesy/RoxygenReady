@@ -6,6 +6,11 @@
 \usage{
 substrRight(x, n)
 }
+\arguments{
+\item{x}{a character vector.}
+
+\item{n}{integer. The number of elements on the right to be kept.}
+}
 \description{
 Take the right substring of a string
 }
