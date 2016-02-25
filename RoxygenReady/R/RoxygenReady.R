@@ -2,7 +2,7 @@
 
 #' kollapse
 #'
-#' # paste0 values and string to one string. It also prints the results (good for a quick check)
+#'  paste0 values and string to one string. It also prints the results (good for a quick check)
 #' @param ...
 #' @param print
 #' @examples kollapse("Hello ", "you ", 3, ", " , 11, " year old kids.")
@@ -15,7 +15,7 @@ kollapse <- function(..., print =T) {
 
 #' substrRight
 #'
-#' # Take the right substring of a string
+#'  Take the right substring of a string
 #' @param x
 #' @param n
 #' @examples substrRight  ("Not cool", n=4)
@@ -27,7 +27,7 @@ substrRight <- function (x, n){
 
 #' toClipboard
 #'
-#' # Copy an R-object to your clipboard on OS X.
+#' Copy an R-object to your clipboard on OS X.
 #' @param x
 #' @param sep
 #' @param header
@@ -53,7 +53,7 @@ RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions
 	x = strsplit(FileWithFunctions, split = "/")[[1]]
 	ScriptName = x[length(x)]
 	write(kollapse("## ", ScriptName, "\n\n", print = F), file = outFile)
-	list_of_functions = rr_extract_all_function_names_in_a_script(FileWithFunctions)
+	list_of_functions = rr_extract_all_functions_from_a_script(FileWithFunctions)
 	funnames = names(list_of_functions)
 	commentz = rr_extract_all_descriptions_from_comment(FileWithFunctions)
 	for (i in 1:length(list_of_functions)) {
@@ -83,14 +83,14 @@ RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions
 	}
 }
 
-#' rr_extract_all_function_names_in_a_script
+#' rr_extract_all_functions_from_a_script
 #'
 #' Scan a script for function's defined there.
 #' @param inFile input file with function definitions to be scanned
-#' @examples rr_extract_all_function_names_in_a_script (inFile =  )
+#' @examples rr_extract_all_functions_from_a_script (inFile =  )
 #' @export
 
-rr_extract_all_function_names_in_a_script <-function (inFile) {
+rr_extract_all_functions_from_a_script <-function (inFile) {
 	ScriptAsStringsPerLine = readLines(inFile)
 	source(inFile)
 	patt = " *<- *function *\\(.+"
@@ -110,14 +110,11 @@ rr_extract_all_function_names_in_a_script <-function (inFile) {
 #' @examples rr_extract_all_descriptions_from_comment (inFile =  )
 #' @export
 
-rr_extract_all_descriptions_from_comment <-function (inFile) {
+rr_extract_all_descriptions_from_comment_annot <-function (inFile) {
 	ScriptAsStringsPerLine = readLines(inFile)
-	patt = " *<- *function *\\(.+"
-	index = grep(patt, ScriptAsStringsPerLine, perl = T)
-	FirstLineComments = gsub(".+# ", "", ScriptAsStringsPerLine[index])
-	funnames = gsub(patt, "", ScriptAsStringsPerLine[index])
-	funnames = as.list(gsub("[[:space:]]*$", "", funnames))
-	names(FirstLineComments) = funnames
+	patt = "^#'$"
+	index = grep(patt, ScriptAsStringsPerLine, perl = T)+1
+	FirstLineComments = gsub("^#'[[:space:]]*", "", ScriptAsStringsPerLine[index])
 	return(FirstLineComments)
 }
 
@@ -140,22 +137,24 @@ rr_extract_default_args <-function (function_to_parse) {
 #' Create a Markdown document with a numbered list of all functions and their descriptions from the "inFile", saved right next to it!
 #' @param inFile File with the funcitons to be listed and displayed in a .md file.
 #' @param outFile The location of the created markdown document with the list of functions in the  "inFile". By default, it saves next to it, with the extension ".FunctionOverview.md".
+#' @param RoxygenReadyInputFile Set to FALSE if the input script has the comments of the 1st line of the function definition instead of having it in a Roxygen Skeleton.
 #' @examples rr_function_overview_document (inFile =  , outFile = paste0(inFile, ".FunctionOverview.md"))
 #' @export
 
-rr_function_overview_document <-function (inFile, outFile = paste0(inFile, ".FunctionOverview.md") ) { # Create a Markdown document with a numbered list of all functions and their descriptions from the "inFile", saved right next to it!
-	FunctionNames = names(rr_extract_all_function_names_in_a_script(inFile) )
+rr_function_overview_document <-function (inFile, outFile = paste0(inFile, ".FunctionOverview.md"), RoxygenReadyInputFile=T ) { # Create a Markdown document with a numbered list of all functions and their descriptions from the "inFile", saved right next to it!
+	FunctionNames = names(rr_extract_all_functions_from_a_script(inFile) )
 	n = length(FunctionNames)
-	FunctionNames = paste0("### ", (1:n), ". ",names(rr_extract_all_function_names_in_a_script(inFile) ) )
-	Descriptions = paste0("- ", rr_extract_all_descriptions_from_comment(inFile) )
-
 	FunctionNames = FunctionNames[order(FunctionNames)]
-	Descriptions = Descriptions[order(FunctionNames)] # Reorder by
+	FunctionNames = paste0("### ", (1:n), ". ",names(rr_extract_all_functions_from_a_script(inFile) ) )
+
+	if (RoxygenReadyInputFile) { 	Descriptions = paste0("- ", rr_extract_all_descriptions_from_comment_annot(inFile) ) 	}
+	if ( !RoxygenReadyInputFile) {	Descriptions = paste0("- ", rr_extract_all_descriptions_from_comment(inFile) ) 			}
+	Descriptions = Descriptions[order(FunctionNames)] # Reorder Alphanumerically
+
 	body = paste0( "\n\n", FunctionNames, "\n", Descriptions)
 	write("## Function Overview", file = outFile)
 	write("You find the list of function of this library below. For details, please use the `help()` function. <br>", file = outFile, append = T)
 	write(body, file = outFile, append = T)
-
 }
 
 

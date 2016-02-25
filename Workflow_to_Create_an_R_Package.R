@@ -53,6 +53,8 @@ setwd(PackageName)
 getwd()
 document()
 
+rr_function_overview_document("/Users/abelvertesy/RoxygenReady/RoxygenReady/R/RoxygenReady.R")
+
 # Install your package ------------------------------------------------
 setwd(RepositoryDir)
 install(PackageName)
@@ -69,3 +71,4 @@ require("RoxygenReady")
 # Clean up if not needed anymore ------------------------------------------------
 # installed.packages()
 # remove.packages("RoxygenReady")
+
