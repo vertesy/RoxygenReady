@@ -133,11 +133,11 @@ rr_extract_default_args <-function (function_to_parse) {
 	return(paste(names(a), a, sep = " = ", collapse = ", "))
 }
 
-#' funnotator_RoxygenReady.headerOnly
+#' RoxygenReady.MemoryToClipboard
 #'
 #' Compile a single functions documentation for Roxygen
 #' @param function_to_parse Name of the function with the arguments of interest.
-#' @examples funnotator_RoxygenReady.headerOnly (function_to_parse =  )
+#' @examples RoxygenReady.MemoryToClipboard (function_to_parse =  )
 #' @export
 
 RoxygenReady.MemoryToClipboard <-function (function_to_parse) {
@@ -171,7 +171,7 @@ RoxygenReady.MemoryToClipboard <-function (function_to_parse) {
 #' Compile and write out a single functions documentation for Roxygen
 #' @param function_to_parse Name of the function with the arguments of interest.
 #' @param outFile Filename and path where the annotated version will be written out
-#' @examples funnotator_RoxygenReady.singleFunction (function_to_parse =  , outFile = )
+#' @examples RoxygenReady.singleFunction.MemoryToFile (function_to_parse =  , outFile = )
 #' @export
 
 RoxygenReady.singleFunction.MemoryToFile <-function (function_to_parse, outFile) {
