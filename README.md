@@ -11,8 +11,6 @@ The annotation skeleton it creates, can be automatically compiled into a package
 
 ##### You can pass a whole file to **RoxygenReady**, and it will create *Roxygen skeletons* for all functions defined in the file!
 
-<br>
-**RoxygenReady** is a project maintained by @vertesy.
 
 <br><br>
 ## Workflow: *a streamlined package creation*
@@ -105,6 +103,9 @@ A couple of functions to generate inline description from your functions, using 
 - You can also check [Workflow_to_Create_an_R_Package.R](https://github.com/vertesy/RoxygenReady/blob/master/Workflow_to_Create_an_R_Package.R) for more details 
 
 - And maybe check out a great introduction about writing your first package in R by [Hillary Parker](http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/)
+
+<br>
+**RoxygenReady** is a project maintained by @vertesy.
 
 
  <br/> <br/> <br/> <br/> <br/>
