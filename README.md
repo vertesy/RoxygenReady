@@ -1,3 +1,9 @@
+
+
+[![DOI](https://zenodo.org/badge/20391/vertesy/RoxygenReady.svg)](https://zenodo.org/badge/latestdoi/20391/vertesy/RoxygenReady)
+
+
+
 ## Create Roxygen skeletons for all of your functions before compiling it into an R package.
 
 
