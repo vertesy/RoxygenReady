@@ -52,7 +52,7 @@ toClipboard <- function(x, sep="\t", header=FALSE, row.names=FALSE, col.names =F
 RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions, ".annot.R", print = F), overview = T) {
 	x = strsplit(FileWithFunctions, split = "/")[[1]]
 	ScriptName = x[length(x)]
-	write(kollapse("## ", ScriptName, "\n\n", print = F), file = outFile)
+	write(kollapse("## ", ScriptName, " - compiled by RoxygenReady, a package by @vertesy\n\n", print = F), file = outFile)
 	list_of_functions = rr_extract_all_functions_from_a_script(FileWithFunctions)
 	funnames = names(list_of_functions)
 	commentz = rr_extract_all_descriptions_from_comment(FileWithFunctions)
@@ -79,8 +79,8 @@ RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions
 		code_ = gsub(paste0("  ", "  "), "\t", code_, perl = T)
 		code = c(kollapse(funnames[i], " <-", code_[1:2], print = F), code_[3:length(code_)], sep = "\n")
 		write(code, file = outFile, append = T)
-		if (overview) { rr_function_overview_document(FileWithFunctions, RoxygenReadyInputFile = F) }
 	}
+	if (overview) { rr_function_overview_document(FileWithFunctions, RoxygenReadyInputFile = F) }
 }
 
 #' rr_extract_all_functions_from_a_script

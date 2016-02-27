@@ -11,9 +11,26 @@ The annotation skeleton it creates, can be automatically compiled into a package
 
 ##### You can pass a whole file to **RoxygenReady**, and it will create *Roxygen skeletons* for all functions defined in the file!
 
+<br><br>
+## Installation and Usage
+
+1. Install directly from **GitHub** via **devtools** with one R command:
+
+    `devtools::install_github(repo = "vertesy/RoxygenReady/RoxygenReady")`
+    
+2. ...then simply load the package:
+
+    `require("RoxygenReady")`
+     
+    
+3. and create Roxygen skeletons for your functions
+
+
+    `RoxygenReady("Path/to/your/script.r")`
+
 
 <br><br>
-## Workflow: *a streamlined package creation*
+## Workflow Explained: *a streamlined package creation*
 
 ### 1. You start out with your .R file containing your favorite functions.
 
@@ -60,18 +77,6 @@ You can share your package on **GitHub**, and everyone can super easily install 
 	
 
 <br><br>
-## Installation
-
-Install directly from **GitHub** via **devtools** with one R command:
-
-<!--    devtools::install_github(repo = "vertesy/RoxygenReady/", subdir = "RoxygenReady")-->
-    devtools::install_github(repo = "vertesy/RoxygenReady/RoxygenReady")
-    
-...then simply load the package:
-
-    require("RoxygenReady")
-
-<br><br>
 ## Package content
 
 A couple of functions to generate inline description from your functions, using their names and arguments as default input. These can be later parsed by Roxygen to an R package's help section.
@@ -104,7 +109,7 @@ A couple of functions to generate inline description from your functions, using 
 - And maybe check out a great introduction about writing your first package in R by [Hillary Parker](http://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/)
 
 <br>
-**RoxygenReady** is a project maintained by @vertesy.
+**RoxygenReady** is a project of @vertesy.
 
 
  <br/> <br/> <br/> <br/> <br/>

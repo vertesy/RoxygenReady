@@ -53,7 +53,7 @@ setwd(PackageName)
 getwd()
 document()
 
-rr_function_overview_document("/Users/abelvertesy/RoxygenReady/RoxygenReady/R/RoxygenReady.R")
+# rr_function_overview_document("/Users/abelvertesy/RoxygenReady/RoxygenReady/R/RoxygenReady.R")
 
 # Install your package ------------------------------------------------
 setwd(RepositoryDir)
@@ -65,8 +65,10 @@ help("RoxygenReady")
 # help("print11more") # not in package any more
 
 # Test if you can install from github ------------------------------------------------
-devtools::install_github(username ="vertesy" ,repo = "TheCorvinas", subdir = "R/R_Packages/RoxygenReady")
+devtools::install_github(repo = "vertesy/RoxygenReady/RoxygenReady")
 require("RoxygenReady")
+
+RoxygenReady("/Users/abelvertesy/RoxygenReady/Development/01.Before.R")
 
 # Clean up if not needed anymore ------------------------------------------------
 # installed.packages()
