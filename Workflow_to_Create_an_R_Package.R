@@ -21,7 +21,7 @@ Package_FnP = 	kollapse(PackageDir, "/R/", fname)
 # file.exists(Package_FnP)
 # dir.exists(PackageDir)
 DESCRIPTION <- list("Title" = "A Roxygen Skeleton Parser",
-					"Authors@R" = 'person(given = "Abel", family = "Vertesy", email = "a.vertesy@hubrecht.eu", role = c("aut", "cre"))',
+					"Authors@R" = person(given = "Abel", family = "Vertesy", email = "a.vertesy@hubrecht.eu", role = c("aut", "cre")),
 					"Description" = "Prepare your function-script to compile into a package by Roxygen2",
 					"License" = "GNU GPL 3"
 					)

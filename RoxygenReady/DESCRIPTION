@@ -1,8 +1,7 @@
 Package: RoxygenReady
 Title: Package documentation generator
 Version: 0.0.0.9000
-Authors@R: Abel Vertesy <a.vertesy@hubrecht.eu> [aut, cre]
-# person(given = "Abel", family = "Vertesy", email = "a.vertesy@hubrecht.eu", role = c("aut", "cre"))
+Authors@R: 'Abel Vertesy <a.vertesy@hubrecht.eu> [aut, cre]'
 Description: Prepare your function-script to compile into a package by Roxygen2
 Depends:
 	R (>= 3.2.2)
