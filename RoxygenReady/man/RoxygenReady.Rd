@@ -2,7 +2,7 @@
 % Please edit documentation in R/RoxygenReady.R
 \name{RoxygenReady}
 \alias{RoxygenReady}
-\title{RoxygenReady.FileToFile}
+\title{RoxygenReady}
 \usage{
 RoxygenReady(FileWithFunctions, outFile = kollapse(FileWithFunctions,
   ".annot.R", print = F), overview = T)

@@ -16,7 +16,7 @@ toClipboard(x, sep = "\\t", header = FALSE, row.names = FALSE,
 
 \item{row.names}{either a logical value indicating whether the row names of x are to be written along with x, or a character vector of row names to be written.}
 
-\item{col.names}{either a logical value indicating whether the column names of x are to be written along with x, or a character vector of column names to be written. See the section on <U+2018>CSV files<U+2019> for the meaning of col.names = NA.}
+\item{col.names}{either a logical value indicating whether the column names of x are to be written along with x, or a character vector of column names to be written. See the section on ‘CSV files’ for the meaning of col.names = NA.}
 }
 \description{
 Copy an R-object to your clipboard on OS X.

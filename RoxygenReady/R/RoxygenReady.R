@@ -40,7 +40,27 @@ toClipboard <- function(x, sep="\t", header=FALSE, row.names=FALSE, col.names =F
 	write.table(x, pipe("pbcopy"), sep=sep, row.names=row.names, col.names =col.names, quote = F)
 }
 
-#' RoxygenReady.FileToFile
+
+#' as.named.vector
+#'
+#' @param A single column (or row) of a dataframe
+#' @param WhichDimNames Set to 1 for row names of a selected colun, set to 2 for column names if you selected a row.
+#' @examples as.named.vector(YourDataFrameWithRownames[, 1], WhichDimNames = 1)
+#' @export 
+
+as.named.vector <- function(YourDataFrameWithRownames, WhichDimNames = 1) { # Convert a dataframe column or row into a vector, keeping the corresponding dimension name.
+  # use RowNames: WhichDimNames = 1 , 2: use ColNames
+  # !!! might require drop=F in subsetting!!! eg: YourDataFrameWithRownames[,3, drop=F]
+  # YourDataFrameWithRownames[which(unlist(lapply(YourDataFrameWithRownames, is.null)))] = "NULL" # replace NULLs - they would fall out of vectors - DOES not work yet
+  namez = dimnames(YourDataFrameWithRownames)[[WhichDimNames]]
+  if (is.list(YourDataFrameWithRownames) & !is.data.frame(YourDataFrameWithRownames)) {namez = names(YourDataFrameWithRownames)}
+  vecc = as.vector(unlist (YourDataFrameWithRownames))
+  names (vecc)= namez
+  return (vecc)
+}
+
+
+#' RoxygenReady
 #'
 #' Read in a file, annotate and write out all functions documentation with Roxygen skeleton (FileToFile)
 #' @param FileWithFunctions An .R file containing all the function definitions of your library

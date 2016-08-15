@@ -3,6 +3,7 @@
 export(RoxygenReady)
 export(RoxygenReady.MemoryToClipboard.singleFunction)
 export(RoxygenReady.MemoryToFile.singleFunction)
+export(as.named.vector)
 export(kollapse)
 export(rr_extract_all_descriptions_from_comment)
 export(rr_extract_all_descriptions_from_comment_annot)
