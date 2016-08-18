@@ -27,8 +27,6 @@ if ( !dir.exists(PackageName) ) { create(PackageName, description = DESCRIPTION)
 
 
 
-
-
 # Compile a package ------------------------------------------------
 setwd("/Users/abelvertesy/Github_repos/RoxygenReady/RoxygenReady")
 getwd()
@@ -41,5 +39,5 @@ install(PackageName)
 require("RoxygenReady")
 
 # Test your package ------------------------------------------------
-help("descriptor_roxy")
+help("rr_extract_all_descriptions_from_comment")
 

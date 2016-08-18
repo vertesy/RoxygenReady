@@ -113,7 +113,7 @@ RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions
 rr_extract_all_functions_from_a_script <-function (inFile) {
 	ScriptAsStringsPerLine = readLines(inFile)
 	source(inFile)
-	patt = " *<- *function *\\(.+"
+	patt = " *<-|= *function *\\(.+"
 	index = grep(patt, ScriptAsStringsPerLine, perl = T)
 	funnames = gsub(patt, "", ScriptAsStringsPerLine[index])
 	funnames = as.list(gsub("[[:space:]]*$", "", funnames))
@@ -145,7 +145,7 @@ rr_extract_default_args <-function (function_to_parse) {
 
 rr_extract_all_descriptions_from_comment <-function (inFile) {
 	ScriptAsStringsPerLine = readLines(inFile)
-	patt = " *<- *function *\\(.+"
+	patt = " *<-|= *function *\\(.+"
 	index = grep(patt, ScriptAsStringsPerLine, perl = T)
 	FirstLineComments = gsub(".+# ", "", ScriptAsStringsPerLine[index])
 	funnames = gsub(patt, "", ScriptAsStringsPerLine[index])
