@@ -1,3 +1,7 @@
+# MacOS Files
+.DS_STORE
+
+
 .Rproj.user
 .Rhistory
 .RData
