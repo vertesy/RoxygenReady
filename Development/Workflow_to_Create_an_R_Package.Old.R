@@ -1,18 +1,18 @@
 ######################################################################################################
 # Workflow_to_Create_an_R_Package.R
 ######################################################################################################
-# source("/Users/abelvertesy/RoxygenReady/Workflow_to_Create_an_R_Package.R")
+# source("~/RoxygenReady/Workflow_to_Create_an_R_Package.R")
 rm(list=ls(all = TRUE));
 try(dev.off())
 
 # Functions ------------------------
-try (source ('/Users/abelvertesy/TheCorvinas/R/CodeAndRoll.R'),silent= F)
+try (source ('~/TheCorvinas/R/CodeAndRoll.R'),silent= F)
 # install.packages("roxygen2")
 library(devtools, roxygen2)
 
 # Setup ------------------------
 
-PackageDir = 	"/Users/abelvertesy/RoxygenReady/"
+PackageDir = 	"~/RoxygenReady/"
 PackageName = 	"RoxygenReady"
 	fname = 	kollapse(PackageName,".R")
 Package_FnP = 	kollapse(PackageDir, PackageName, "/R/", fname)

@@ -1,17 +1,17 @@
 ######################################################################################################
 # Recompile_the_RoxygenReady_Package.R
 ######################################################################################################
-# /Users/abelvertesy/RoxygenReady/Development/Recompile_the_RoxygenReady_Package.R
+# ~/RoxygenReady/Development/Recompile_the_RoxygenReady_Package.R
 rm(list=ls(all.names = TRUE));
 try(dev.off())
 
 # Functions ------------------------
-try (source ('/Users/abelvertesy/Github_repos/TheCorvinas/R/CodeAndRoll.R'),silent= F)
+try (source ('~/Github_repos/TheCorvinas/R/CodeAndRoll.R'),silent= F)
 library(devtools, roxygen2)
 
 # Setup ------------------------
 
-PackageDir = 	"/Users/abelvertesy/Github_repos/RoxygenReady/"
+PackageDir = 	"~/Github_repos/RoxygenReady/"
 PackageName = 	"RoxygenReady"
 fname = 	kollapse(PackageName,".R")
 Package_FnP = 	kollapse(PackageDir, PackageName, "/R/", fname)
@@ -28,7 +28,7 @@ if ( !dir.exists(PackageName) ) { create(PackageName, description = DESCRIPTION)
 
 
 # Compile a package ------------------------------------------------
-setwd("/Users/abelvertesy/Github_repos/RoxygenReady/RoxygenReady")
+setwd("~/Github_repos/RoxygenReady/RoxygenReady")
 getwd()
 document()
 

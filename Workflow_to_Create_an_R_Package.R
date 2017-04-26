@@ -1,18 +1,18 @@
 ######################################################################################################
 # Workflow_to_Create_an_R_Package.R
 ######################################################################################################
-# source("/Users/abelvertesy/RoxygenReady/Workflow_to_Create_an_R_Package.R")
+# source("~/RoxygenReady/Workflow_to_Create_an_R_Package.R")
 rm(list=ls(all.names = TRUE));
 try(dev.off())
 
 # Functions ------------------------
-try (source ('/Users/abelvertesy/TheCorvinas/R/CodeAndRoll.R'),silent= F)
+try (source ('~/TheCorvinas/R/CodeAndRoll.R'),silent= F)
 # install.packages("roxygen2")
 library(devtools, roxygen2)
 
 # Setup ------------------------
 
-RepositoryDir = 	"/Users/abelvertesy/RoxygenReady/"
+RepositoryDir = 	"~/RoxygenReady/"
 PackageName = 	"RoxygenReady"
 	fname = 	kollapse(PackageName,".R")
 
@@ -53,7 +53,7 @@ setwd(PackageName)
 getwd()
 document()
 
-# rr_function_overview_document("/Users/abelvertesy/RoxygenReady/RoxygenReady/R/RoxygenReady.R")
+# rr_function_overview_document("~/RoxygenReady/RoxygenReady/R/RoxygenReady.R")
 
 # Install your package ------------------------------------------------
 setwd(RepositoryDir)
@@ -68,7 +68,7 @@ help("RoxygenReady")
 devtools::install_github(repo = "vertesy/RoxygenReady/RoxygenReady")
 require("RoxygenReady")
 
-RoxygenReady("/Users/abelvertesy/RoxygenReady/Development/01.Before.R")
+RoxygenReady("~/RoxygenReady/Development/01.Before.R")
 
 # Clean up if not needed anymore ------------------------------------------------
 # installed.packages()
