@@ -80,8 +80,8 @@ The annotation skeleton it creates, can be automatically compiled into a package
 ### 4. Installing your package and share via GitHub!
 
 ```r
-       install.packages(YourPackage)
-       require(YourPackage)
+    install.packages("YourPackage")
+    require("YourPackage")
 ```
 
 Browse for help on your functions `help(print11more)`:
