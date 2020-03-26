@@ -22,17 +22,23 @@ The annotation skeleton it creates, can be automatically compiled into a package
 
 1. Install directly from **GitHub** via **devtools** with one R command:
 
-    `devtools::install_github(repo = "vertesy/RoxygenReady/RoxygenReady")`
+    ```r
+    devtools::install_github(repo = "vertesy/RoxygenReady/RoxygenReady")
+    ```
     
 2. ...then simply load the package:
 
-    `require("RoxygenReady")`
+    ```r
+    require("RoxygenReady")
+    ```
      
     
 3. and create Roxygen skeletons for your functions
 
 
-    `RoxygenReady("Path/to/your/script.r")`
+    ```r
+    RoxygenReady("Path/to/your/script.r")
+    ```
 
 
 <br><br>
@@ -40,15 +46,18 @@ The annotation skeleton it creates, can be automatically compiled into a package
 
 ### 1. You start out with your .R file containing your favorite functions.
 
+```r
  		print11more <- function(n=1, m=1) { # a function with real added value
 			print (n+(11*m))
 		}
+```
 
 	- RoxygenReady expects a short description in the first line, after the `{` character, which will be parsed into the description field of the function annotation.
 
 
 ### 2. Construct *Roxygen skeletons* RoxygenReady from all functions in your script.
 
+```r
 		#' print11more
 		#'
 		#' # a function with real added value
@@ -61,7 +70,7 @@ The annotation skeleton it creates, can be automatically compiled into a package
 		print11more <- function(n=1, m=1) {
 			print (n+(11*m))
 		}
-
+```
 
 ### 3. Compile your package by roxygen.
 
@@ -70,9 +79,10 @@ The annotation skeleton it creates, can be automatically compiled into a package
 
 ### 4. Installing your package and share via GitHub!
 
-
+```r
        install.packages(YourPackage)
        require(YourPackage)
+```
 
 Browse for help on your functions `help(print11more)`:
 
