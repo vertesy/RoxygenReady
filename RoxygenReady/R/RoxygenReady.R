@@ -46,7 +46,7 @@ toClipboard <- function(x, sep="\t", header=FALSE, row.names=FALSE, col.names =F
 #' @param A single column (or row) of a dataframe
 #' @param WhichDimNames Set to 1 for row names of a selected colun, set to 2 for column names if you selected a row.
 #' @examples as.named.vector(YourDataFrameWithRownames[, 1], WhichDimNames = 1)
-#' @export 
+#' @export
 
 as.named.vector <- function(YourDataFrameWithRownames, WhichDimNames = 1) { # Convert a dataframe column or row into a vector, keeping the corresponding dimension name.
   # use RowNames: WhichDimNames = 1 , 2: use ColNames
@@ -91,7 +91,7 @@ RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions
 		for (j in 1:nr_of_args) {
 			desc[[j + 3]] = kollapse(s, "@param ", argz[j], " ", print = F)
 		}
-		desc[[nr_of_args + 4]] = kollapse(s, "@examples ", funnames[i], " (", rr_extract_default_args(funnames[i]),
+		desc[[nr_of_args + 4]] = kollapse(s, "@examples ", funnames[i], "(", rr_extract_default_args(funnames[i]),
 			")", print = F)
 		desc[[nr_of_args + 5]] = kollapse(s, "@export \n", print = F)
 		write(desc, file = outFile, append = T)
