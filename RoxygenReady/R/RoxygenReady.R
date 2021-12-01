@@ -94,7 +94,7 @@ RoxygenReady <-function (FileWithFunctions, outFile = kollapse(FileWithFunctions
 		desc[[nr_of_args + 4]] = kollapse(s, "@examples ", funnames[i], "(", rr_extract_default_args(funnames[i]),
 			")", print = F)
 		desc[[nr_of_args + 5]] = kollapse(s, "@export \n", print = F)
-		write(desc, file = outFile, append = T)
+		write(paste0(desc), file = outFile, append = T)
 		code_ = noquote(deparse(function_to_parse, width.cutoff = 100L))
 		code_ = gsub(paste0("  ", "  "), "\t", code_, perl = T)
 		code = c(kollapse(funnames[i], " <-", code_[1:2], print = F), code_[3:length(code_)], sep = "\n")
